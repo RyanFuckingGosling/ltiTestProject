@@ -18,6 +18,9 @@ class NavigationPage(BasePage):
     def click_menu_button(self):
         self.click("//button[contains(@class, 'v-app-bar__nav-icon')]")
 
+    def click_profile_button(self):
+        self.click("//a[contains(@class, 'user-account__login')]")
+
     def is_block_clicable(self, block_name):
         return self.is_element_display(f"//span[contains(text(), '{block_name}')]/ancestor::div[contains(@class, 'col-md')]//a")
 
