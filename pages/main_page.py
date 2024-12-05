@@ -5,6 +5,10 @@ class MainPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
 
+    def click_block_with_name(self, block_name):
+        self.click(f"//span[contains(text(), '{block_name}')]")
+        self.wait_for_sceleton_not_dislpay()
+
     def is_block_with_name_clickable(self, block_name):
         return self.is_element_clickable(f"//span[contains(text(), '{block_name}')]/../..")
     
