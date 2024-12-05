@@ -1,7 +1,7 @@
 from core.base_page import BasePage
 
 
-LOCATOR_TAB_NAME = "//div[@role='button']//div[contains(text(), '{:s}')]"
+LOCATOR_TAB_NAME = "//div[@role='button']//div[contains(text(), '{:s}')]/.."
 LOCATOR_SECTION_NAME = LOCATOR_TAB_NAME + "/ancestor::div[contains(@class, 'v-list-group--active')]//div[contains(text(), '{:s}')]"
 
 
