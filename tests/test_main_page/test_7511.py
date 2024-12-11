@@ -1,9 +1,11 @@
 #Переключение на компактный вид меню
 from pages.navigation_page import NavigationPage
+from pages.login_page import LoginPage
 
 def step_1(browser):
+    login_page = LoginPage(browser)
     navigation_page = NavigationPage(browser)
-    navigation_page.local_autorization()
+    login_page.local_autorization()
 
     assert navigation_page.is_navigation_menu_open()
 

@@ -28,12 +28,11 @@ import os
     #driver.quit()
     #print('Finish test')
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="package")
 def browser():
     options = Options()
     options.add_argument("--window-size=1920,1080")
     options.page_load_strategy = 'normal'
     driver = webdriver.Chrome(options=options)
-    driver.get("https://stage-lti.softline.com/")
-    driver.implicitly_wait(10)
     yield driver
+    driver.quit()

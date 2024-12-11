@@ -1,11 +1,12 @@
 #Отображение скелетона на главной странице
-from core.base_page import BasePage
+from pages.main_page import MainPage
+from pages.login_page import LoginPage
 
 def step_1(browser):
-    base_page = BasePage(browser)
-    base_page.local_autorization()
-    base_page.open_host()
+    login_page = LoginPage(browser)
+    main_page = MainPage(browser)
+    login_page.local_autorization()
 
-    assert base_page.is_sceleton_display()
+    assert main_page.is_sceleton_display()
 
     #Не понимаю почему не ловит скелетон

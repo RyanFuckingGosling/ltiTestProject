@@ -2,31 +2,18 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
-import pytest
-import time
-
-HOST = "https://stage-lti.softline.com/"
+from data.user_data import Data
 
 
 class BasePage:
 
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(driver, 10, poll_frequency=1)
+        self.wait = WebDriverWait(driver, 15, poll_frequency=1)
 
-    def local_autorization(self):
-        self.find_element("//input[@id='userNameInput']").send_keys("igor.varmund@softline.com")
-        self.driver.implicitly_wait(5)
-        self.click("//span[@id='nextButton']")
-        self.driver.implicitly_wait(5)
-        self.find_element("//input[@id='passwordInput']").send_keys("kgqwdr!1")
-        self.driver.implicitly_wait(5)
-        self.click("//span[@id='submitButton']")
-        self.wait_for_loader_not_display()
 
     def open_host(self):
-        self.driver.get(HOST)
-        self.wait_for_loader_not_display()
+        self.driver.get(Data.HOST)
 
     def open_url(self, path_url):
         self.driver.get(path_url)
@@ -95,5 +82,4 @@ class BasePage:
 
     def wait_for_table_loader_not_display(self):
         locator_table_loader = ("xpath", "//tr[@class = 'v-data-table__empty-wrapper']")
-        if self.is_element_display("//tr[@class = 'v-data-table__empty-wrapper']"):
-            self.wait.until_not(EC.presence_of_element_located(locator_table_loader))
+        self.wait.until_not(EC.presence_of_element_located(locator_table_loader))

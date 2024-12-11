@@ -13,7 +13,6 @@ class NavigationPage(BasePage):
     def click_tab(self, tab_name):
         if self.is_tab_display(tab_name):
             self.find_element(LOCATOR_TAB_NAME.format(tab_name)).click()
-            self.wait_for_sceleton_not_dislpay()
 
     def click_menu_button(self):
         self.click("//button[contains(@class, 'v-app-bar__nav-icon')]")
@@ -34,7 +33,6 @@ class NavigationPage(BasePage):
         self.click_tab(tab_name)
         if self.is_element_display(LOCATOR_SECTION_NAME.format(tab_name, section_name)):
             self.click(LOCATOR_SECTION_NAME.format(tab_name, section_name))
-            self.wait_for_sceleton_not_dislpay()
         else:
             self.click_tab(tab_name)
             self.click(LOCATOR_SECTION_NAME.format(tab_name, section_name))

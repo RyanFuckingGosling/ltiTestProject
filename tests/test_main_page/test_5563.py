@@ -1,12 +1,14 @@
 #Валидация полей главной страницы
 from pages.navigation_page import NavigationPage
 from pages.main_page import MainPage
+from pages.login_page import LoginPage
 
 
 def step_1(browser):
+    login_page = LoginPage(browser)
     main_page = MainPage(browser)
     navigation_page = NavigationPage(browser)
-    main_page.local_autorization()
+    login_page.local_autorization()
 
     assert not navigation_page.is_block_clicable("Программа долгосрочного партнерства")
     assert navigation_page.is_block_clicable("Мои программы")
