@@ -11,6 +11,11 @@ class BasePage:
         self.driver = driver
         self.wait = WebDriverWait(driver, 15, poll_frequency=1)
 
+    def is_allert_with_text_display(self, allert_title, allert_text):
+        locator_allert = ("xpath", "//div[@class='v-alert__content']")
+        self.wait.until(EC.presence_of_element_located(locator_allert))
+        return self.is_element_display(f"//div[@class='v-alert__content']/h3[contains(text(), "
+                                       f"'{allert_title}')]/../div[contains(text(), '{allert_text}')]")
 
     def open_host(self):
         self.driver.get(Data.HOST)

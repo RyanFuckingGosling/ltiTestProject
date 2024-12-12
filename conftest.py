@@ -31,7 +31,7 @@ import os
 @pytest.fixture(scope="package")
 def browser():
     options = Options()
-    options.add_argument("--window-size=1920,1080")
+    options.add_argument("--start-maximized")
     options.page_load_strategy = 'normal'
     driver = webdriver.Chrome(options=options)
     yield driver
