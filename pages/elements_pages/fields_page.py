@@ -1,6 +1,7 @@
 from core.base_page import BasePage
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
+import os
 
 LOCATOR_FIELD = "//label[contains(text(), '{:s}')]/following-sibling::input"
 
@@ -23,8 +24,12 @@ class FieldsPage(BasePage):
     
     def get_text_from_field(self, field_name):
         return self.find_element(LOCATOR_FIELD.format(field_name)).text
+    
+    def set_file_in_field(self, field_name, file_name):
+        if self.is_field_display(field_name):
+            self.find_element(LOCATOR_FIELD.format(field_name)).send_keys(f"{os.getcwd()}/files/{file_name}")
 
-    def send_keys_to_field(self, field_name, text):
+    def set_value_in_field(self, field_name, value):
         if self.is_field_display(field_name):
             self.find_element(LOCATOR_FIELD.format(field_name)).clear()
-            self.find_element(LOCATOR_FIELD.format(field_name)).send_keys(text)
+            self.find_element(LOCATOR_FIELD.format(field_name)).send_keys(value)

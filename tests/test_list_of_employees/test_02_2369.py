@@ -16,7 +16,7 @@ def step_1(browser):
     login_page.local_autorization()
     navigation_page.click_tab("Администрирование")
     fields_page.wait_for_table_loader_not_display()
-    fields_page.send_keys_to_field("Поиск", Data.LOGIN)
+    fields_page.set_value_in_field("Поиск", Data.LOGIN)
     fields_page.wait_for_table_loader_not_display()
     list_of_employees.click_edit_button_for_employee(Data.LOGIN)
     list_of_employees.wait_for_sceleton_not_dislpay()
@@ -33,7 +33,7 @@ def step_2(browser):
 def step_3(browser):
     fields_page = FieldsPage(browser)
     list_of_employees = ListOfEmployees(browser)
-    fields_page.send_keys_to_field("Брокерский счет/Счет депо*", "1234567890")
+    fields_page.set_value_in_field("Брокерский счет/Счет депо*", "1234567890")
     list_of_employees.click_save_button_for_broker()
 
     assert list_of_employees.is_allert_with_text_display("Успешно", "Данные успешно сохранены")
