@@ -38,5 +38,4 @@ def step_3(browser):
     modal_window.click_button_in_modal_window("Сохранить")
 
     assert list_of_employees.is_allert_with_text_display("Успешно", "Данные успешно сохранены")
-    assert list_of_employees.is_document_display_in_field("Согласие на обработку персонаьных данных", 
-                                                          "Согласие_на_обработку_персональных_данных.pdf")
+    

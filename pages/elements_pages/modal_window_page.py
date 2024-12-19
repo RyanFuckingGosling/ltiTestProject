@@ -14,4 +14,3 @@ class ModalWindow(BasePage):
     def click_button_in_modal_window(self, button_name):
         if self.is_element_display(LOCATOR_MODAL_WINDOW + f"//span[contains(text(), '{button_name}')]"):
             self.click(LOCATOR_MODAL_WINDOW + f"//span[contains(text(), '{button_name}')]")
-            self.wait_for_sceleton_not_dislpay()

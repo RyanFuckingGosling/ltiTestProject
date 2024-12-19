@@ -22,4 +22,4 @@ class ListOfEmployees(BasePage):
 
     def is_document_display_in_field(self, field_name, document_name):
         return self.is_element_display(f"//div[contains(text(), '{field_name}')]/.." +
-                                       f"/following-sibling::div//a[contains(text(), '{document_name}')]")
+                                       f"/following-sibling::div//a[contains(text(), '{document_name}')]/..")
